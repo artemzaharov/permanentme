@@ -1,0 +1,19 @@
+{% load wagtailcore_tags %}
+ <div class="article__body">
+     <h2 class="article__title">{{ page.title }}</h2>
+     {{ page.body|richtext }}
+ </div>
+
+
+
+ {% load wagtailtrans_tags %}
+
+{% get_translations page homepage_fallback=False include_self=False as translations %}
+
+{% for language, page in translations.items %}
+<li>
+    <a href="{{ page.full_url }}">
+        <span>{{ language.code }}</span>
+    </a>
+</li>
+{% endfor %}
