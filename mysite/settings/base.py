@@ -56,7 +56,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'wagtail.core.middleware.SiteMiddleware',
+    #'wagtail.core.middleware.SiteMiddleware',  Вызывает ошибку, но все работает корректно
     'wagtailtrans.middleware.TranslationMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
