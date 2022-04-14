@@ -1,0 +1,117 @@
+{% load i18n wagtailimages_tags %}
+{% load i18n wagtailcore_tags %}
+{% load static wagtailuserbar %}
+
+<!-- Sidebar -->
+<div id="sidebar">
+    <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+            <form method="post" action="#">
+                <input type="text" name="query" id="query" placeholder="Search" />
+            </form>
+        </section>
+
+
+        <nav id="menu">
+            <header class="major">
+                {% comment %} <h2>Menu</h2> {% endcomment %}
+                <h3> {% if page %}
+                    {% for translation in page.get_translations.live %}
+                    {% get_language_info for translation.locale.language_code as lang %}
+                    <a href="{% pageurl translation %}" rel="alternate" hreflang="{{ language_code }}"></br>
+                        {{ lang.name_local|title }}
+                    </a>
+                    {% endfor %}
+                    {% endif %}
+                </h3>
+            </header>
+            <ul>
+                <li><a href="/">{{ page.introduction }}</a></li>
+                <li>
+                    <span class="opener">Процедуры</span>
+                    <ul>
+                        <li><a href="#">Губы</a></li>
+                        <li><a href="#">Брови</a></li>
+                        <li><a href="#">МежРесничка</a></li>
+                        <li><a href="#">Удаление</a></li>
+                    </ul>
+                </li>
+                <li><a href="generic.html">Цены</a></li>
+                <li><a href="elements.html">Противопоказания</a></li>
+
+            </ul>
+        </nav>
+
+        <!-- Section -->
+        <section>
+            <header class="major">
+                <h2>Posts</h2>
+            </header>
+            <div class="mini-posts">
+                <article>
+                    {% for page in blog_pages %}
+                    <!-- Top Catagory Area -->
+                    <!--assort - асортимент -->
+                    <div>  <a href="{% pageurl page %}" >Go</a></div>
+                {% image page.image max-200x200 %}
+                <div>{{ page.publication_date }}<div>
+                                <div>{{ page.body }}<div>
+                               
+                             
+                                    
+            
+                    {% endfor %}
+                </article>
+                {% comment %} <article>
+                    <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+                    <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                </article>
+                <article>
+                    <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+                    <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                </article> {% endcomment %}
+            </div>
+            {% comment %} <ul class="actions">
+                <li><a href="#" class="button">More</a></li>
+            </ul> {% endcomment %}
+            <ul class="pagination">
+                <li><span class="button disabled">Prev</span></li>
+                <li><a href="#" class="page active">1</a></li>
+               
+                <li><span>&hellip;</span></li>
+              
+                <li><a href="#" class="page">10</a></li>
+                <li><a href="#" class="button">Next</a></li>
+            </ul>
+        </section>
+        
+        <!-- Section -->
+        <section>
+            <header class="major">
+                <h2>Get in touch</h2>
+            </header>
+            {% comment %} <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem
+                ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat
+                tempus aliquam.</p> {% endcomment %}
+            <ul class="contact">
+                <li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
+                <li class="icon solid fa-phone">(000) 000-0000</li>
+                <li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+                    Nashville, TN 00000-0000</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a
+                    href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5
+                    UP</a>.</p>
+        </footer>
+
+        
+   
+
+    </div>
+</div>

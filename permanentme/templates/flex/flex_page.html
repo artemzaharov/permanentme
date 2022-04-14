@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+{% load i18n wagtailcore_tags %}
+
+{% block content %}
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+         
+                <!-- Header -->
+                {% block header %}
+                {% include "includes/header.html" %}
+                {% endblock header %}
+
+                <!-- Banner -->
+               {% for block in page.content %}
+                    {% include_block block  %}
+               {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- Menu -->
+        {% block menu %}
+        {% include "includes/menu.html" %}
+        {% endblock menu %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n wagtailimages_tags %}
+{% load i18n wagtailcore_tags %}
+
+{% block content %}
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+         
+                <!-- Header -->
+                {% block header %}
+                {% include "includes/header.html" %}
+                {% endblock header %}
+
+                <!-- Banner -->
+                <section id="banner">
+                    <div class="content">
+                        <header>
+                            <h1>Banner_title<br />
+                            by HTML5 UP</h1>
+                            <p>Banner_subtitle</p>
+                        </header>
+                        <p>banner_text, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+                        <ul class="actions">
+                            <li><a href="#" class="button big">banner button if it is</a></li>
+                        </ul>
+                    </div>
+                    <span class="image object">
+                        <img src="images/pic10.jpg" alt="" />
+                    </span>
+                </section>
+                <!-- Section -->
+                
+                 <section>
+                    <header class="major">
+                        <h2>Services/процедуры</h2>
+                    </header>
+                    <div class="posts">
+                    {% for block in page.content %}
+                    {% include_block block  %}
+               {% endfor %}
+                    </div>
+                </section> 
+            </div>
+        </div>
+
+        <!-- Menu -->
+        {% block menu %}
+        {% include "includes/menu.html" %}
+        {% endblock menu %}
+    </div>
+
+{% endblock %}
