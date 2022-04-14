@@ -21,24 +21,24 @@
                 <section id="banner">
                     <div class="content">
                         <header>
-                            <h1>Banner_title<br />
-                            by HTML5 UP</h1>
-                            <p>Banner_subtitle</p>
+                            <h1>{{ page.banner_title }}</h1>
+                            <p>{{ page.banner_subtitle }}</p>
                         </header>
-                        <p>banner_text, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+                        <p>{{ page.banner_text }}</p>
                         <ul class="actions">
-                            <li><a href="#" class="button big">banner button if it is</a></li>
+                            <li><a href="{{ page.banner_button }}" class="button big">{{ page.bunner_button_text }}</a></li>
                         </ul>
                     </div>
                     <span class="image object">
-                        <img src="images/pic10.jpg" alt="" />
+                        {% image self.banner_image fill-500x500  as img %}
+                        <img src="{{ img.url }}" alt="" />
                     </span>
                 </section>
                 <!-- Section -->
                 
                  <section>
                     <header class="major">
-                        <h2>Services/процедуры</h2>
+                        <h2>{{ page.services }}</h2>
                     </header>
                     <div class="posts">
                     {% for block in page.content %}
