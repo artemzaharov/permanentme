@@ -1,11 +1,20 @@
 from django.db import models
-from wagtail.core.models import Page
+from wagtail.core.models import Page, TranslatableMixin
 from wagtail.admin.edit_handlers import PageChooserPanel, FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import StreamField
 from streams import blocks
+from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-
+@register_snippet
+class LeftMenu(TranslatableMixin):
+    
+    menu = StreamField([
+        ('menus', blocks.MenuBlock())
+    ])
+class Meta:
+        verbose_name = "Left Menu"
 
 class HomePage(Page):
     """ Home page model."""
@@ -39,6 +48,9 @@ class HomePage(Page):
         blank=True,
         # title_and_text и full_richtext названия для админки не переменные
     )
+    left_menu = models.ForeignKey(
+        LeftMenu, on_delete=models.SET_NULL, null=True, related_name="left_menus"
+    )
 
     content_panels = Page.content_panels +[
         MultiFieldPanel([
@@ -52,5 +64,7 @@ class HomePage(Page):
         MultiFieldPanel([
             FieldPanel("services"),
             StreamFieldPanel("content"),
-        ], heading="Services")
+        ], heading="Services"),
+        SnippetChooserPanel("left_menu"),
     ]
+

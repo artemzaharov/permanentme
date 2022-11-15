@@ -16,7 +16,6 @@
 
         <nav id="menu">
             <header class="major">
-                {% comment %} <h2>Menu</h2> {% endcomment %}
                 <h3> {% if page %}
                     {% for translation in page.get_translations.live %}
                     {% get_language_info for translation.locale.language_code as lang %}
@@ -27,71 +26,21 @@
                     {% endif %}
                 </h3>
             </header>
-            <ul>
-                <li><a href="/">{{ page.introduction }}</a></li>
-                <li>
-                    <span class="opener">Процедуры</span>
-                    <ul>
-                        <li><a href="#">Губы</a></li>
-                        <li><a href="#">Брови</a></li>
-                        <li><a href="#">МежРесничка</a></li>
-                        <li><a href="#">Удаление</a></li>
-                    </ul>
-                </li>
-                <li><a href="generic.html">Цены</a></li>
-                <li><a href="elements.html">Противопоказания</a></li>
-
+    
+            <ul>  
+                {% for block in page.left_menu.menu %}
+                {% include_block block  %}
+           {% endfor %}
             </ul>
-        </nav>
-
-        <!-- Section -->
-        <section>
-            <header class="major">
-                <h2>Posts</h2>
-            </header>
-            <div class="mini-posts">
-                <article>
-                    {% for page in blog_pages %}
-                    <!-- Top Catagory Area -->
-                    <!--assort - асортимент -->
-                    <div>  <a href="{% pageurl page %}" >Go</a></div>
-                {% image page.image max-200x200 %}
-                <div>{{ page.publication_date }}<div>
-                                <div>{{ page.body }}<div>
-                               
-                             
-                                    
             
-                    {% endfor %}
-                </article>
-                {% comment %} <article>
-                    <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-                    <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                </article>
-                <article>
-                    <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-                    <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                </article> {% endcomment %}
-            </div>
-            {% comment %} <ul class="actions">
-                <li><a href="#" class="button">More</a></li>
-            </ul> {% endcomment %}
-            <ul class="pagination">
-                <li><span class="button disabled">Prev</span></li>
-                <li><a href="#" class="page active">1</a></li>
-               
-                <li><span>&hellip;</span></li>
-              
-                <li><a href="#" class="page">10</a></li>
-                <li><a href="#" class="button">Next</a></li>
-            </ul>
-        </section>
-        
+        </nav>   
         <!-- Section -->
         <section>
             <header class="major">
                 <h2>Get in touch</h2>
             </header>
+            
+
             {% comment %} <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem
                 ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat
                 tempus aliquam.</p> {% endcomment %}
