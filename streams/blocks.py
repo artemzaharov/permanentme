@@ -12,7 +12,7 @@ class MenuBlock(blocks.StructBlock):
         label = "Menus"
 
 class TitleAndTextBlock(blocks.StructBlock):
-
+    ''' Simple reuseble title and text block'''
     title = blocks.CharBlock(required=True, help_text='Add your title')
     text = blocks.TextBlock(required=True, help_text='Add additional text')
     image = ImageChooserBlock()
@@ -23,9 +23,7 @@ class TitleAndTextBlock(blocks.StructBlock):
         label = "Title & Text"
 
 class CardBlock(blocks.StructBlock):
-    """ Cards with image text and button """
-
-    
+    """ Reuseble Card with image text and button """
 
     cards = blocks.ListBlock(
         blocks.StructBlock(

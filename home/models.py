@@ -7,14 +7,18 @@ from streams import blocks
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
+
 @register_snippet
 class LeftMenu(TranslatableMixin):
-    
+    ''' Alows to translate menus '''
     menu = StreamField([
         ('menus', blocks.MenuBlock())
     ])
+
+
 class Meta:
-        verbose_name = "Left Menu"
+    verbose_name = "Left Menu"
+
 
 class HomePage(Page):
     """ Home page model."""
@@ -31,7 +35,8 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    bunner_button_text = models.CharField(max_length=100, blank=False, null=True)
+    bunner_button_text = models.CharField(
+        max_length=100, blank=False, null=True)
     banner_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -52,7 +57,7 @@ class HomePage(Page):
         LeftMenu, on_delete=models.SET_NULL, null=True, related_name="left_menus"
     )
 
-    content_panels = Page.content_panels +[
+    content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel("banner_title"),
             FieldPanel("banner_subtitle"),
@@ -67,4 +72,3 @@ class HomePage(Page):
         ], heading="Services"),
         SnippetChooserPanel("left_menu"),
     ]
-

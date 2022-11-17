@@ -11,7 +11,7 @@
         <!-- Main -->
         <div id="main">
             <div class="inner">
-         
+
                 <!-- Header -->
                 {% block header %}
                 {% include "includes/header.html" %}
@@ -26,26 +26,35 @@
                         </header>
                         <p>{{ page.banner_text }}</p>
                         <ul class="actions">
-                            <li><a href="{{ page.banner_button }}" class="button big">{{ page.bunner_button_text }}</a></li>
+                            <li><a href="{{ page.banner_button }}" class="button big">{{ page.bunner_button_text }}</a>
+                            </li>
+                            <li><a href="{{ page.banner_button }}" class="button big">{{ page.bunner_button_text }}</a>
+                            </li>
+                            <li><a href="{{ page.banner_button }}" class="button big">{{ page.bunner_button_text }}</a>
+                            </li>
+
                         </ul>
+
                     </div>
                     <span class="image object">
-                        {% image self.banner_image fill-500x500  as img %}
+                        {% image self.banner_image original as img %}
                         <img src="{{ img.url }}" alt="" />
+
                     </span>
+
                 </section>
                 <!-- Section -->
-                
-                 <section>
+
+                <section>
                     <header class="major">
                         <h2>{{ page.services }}</h2>
                     </header>
                     <div class="posts">
-                    {% for block in page.content %}
-                    {% include_block block  %}
-               {% endfor %}
+                        {% for block in page.content %}
+                        {% include_block block %}
+                        {% endfor %}
                     </div>
-                </section> 
+                </section>
             </div>
         </div>
 
@@ -55,4 +64,4 @@
         {% endblock menu %}
     </div>
 
-{% endblock %}
+    {% endblock %}
